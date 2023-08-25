@@ -2,26 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base{
+  body{
+    @apply bg-primary
+  }
+
+  h1{
+    @apply text-3xl font-bold
+  }
+
+  h2{
+    @apply text-2xl font-bold
+  }
+
+  h3{
+    @apply text-xl font-bold
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer utilities{
+  .gradient {
+    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+  }
+}
+
+@layer components{
+
+  /* REUSABLE */
+  .btn-primary{
+    @apply gradient text-white py-2 px-3 block text-center rounded-xl active:scale-95 hover:scale-105 transition-all mt-4
+  }
+
+  /* SIDEBAR */
+  .nav__menu--avatar{
+    @apply flex flex-col text-center items-center gap-3 mb-10 py-3 px-5
+  }
+  .nav__menu--item{
+    @apply py-3 px-5 flex items-center gap-5 md:mb-5  rounded-lg transition-all
+    hover:nav__link--active hover:scale-[1.025] active:scale-95
+    
+  }
+  .nav__link--active{
+    @apply gradient text-white shadow-lg 
+  }
+
+  /* BOTTOM NAVIGATION */
+  .bottom-nav{
+    @apply fixed md:hidden bottom-2 left-5 right-5 rounded-xl py-4 bg-white shadow-lg shadow-indigo-200 z-50
+  }
+
+  .product__list{
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14
+  }
+
+  .product__card{
+    @apply bg-white p-10 rounded-xl shadow-md hover:scale-105 hover:shadow-xl shadow-indigo-50 hover:shadow-indigo-100 transition-all
+  }
+
+  .product__container {
+    @apply flex flex-col md:flex-row bg-white px-10 py-16 rounded-2xl shadow-xl shadow-indigo-50 items-center gap-10
+  }
+
+
+  /* TASKS */
+  .tasks__list{
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10
+  }
+  .task__card{
+    @apply p-5 bg-white shadow-md shadow-indigo-50 rounded-xl hover:scale-105 hover:shadow-xl shadow-indigo-50 hover:shadow-indigo-100 transition-all
+  }
+  .task__form {
+    @apply mx-auto max-w-md mb-10
+  }
+
+  /* LOGIN */
+  .login__form{
+    @apply max-w-md m-auto
+  }
 }
