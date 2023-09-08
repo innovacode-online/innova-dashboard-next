@@ -1,13 +1,12 @@
 version: '3'
-
 services:
-  database:
-    image: postgres:15.3
-    container_name: task-db
-    ports:
-      - 5432:5432
+  db:
+    image: postgres
+    container_name: innova-tasks-db
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
     volumes:
       - ./postgres:/var/lib/postgresql/data
