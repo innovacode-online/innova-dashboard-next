@@ -70,7 +70,7 @@
     @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10
   }
   .task__card{
-    @apply p-5 bg-white shadow-md shadow-indigo-50 rounded-xl hover:scale-105 hover:shadow-xl shadow-indigo-50 hover:shadow-indigo-100 transition-all
+    @apply p-5 bg-white shadow-md rounded-xl hover:scale-105 hover:shadow-xl shadow-indigo-50 hover:shadow-indigo-100 transition-all
   }
   .task__form {
     @apply mx-auto max-w-md mb-10
