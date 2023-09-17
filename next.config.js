@@ -9,6 +9,10 @@ const nextConfig = {
             {
                 hostname: 'store.innovacode.online',
                 protocol: 'https',
+            },
+            {
+                hostname: 'avatars.githubusercontent.com',
+                protocol: 'https',
             }
         ]
     }
