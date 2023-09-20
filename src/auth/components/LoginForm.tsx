@@ -1,13 +1,20 @@
 'use client'
-import { IoLogoGithub } from "react-icons/io";
+
+import { FormEvent, useState } from "react";
 import { signIn } from 'next-auth/react';
-import { FormEvent } from "react";
+
+import { IoLogoGithub } from "react-icons/io";
 
 export const LoginForm = () => {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleSubmit = ( e: FormEvent ) => {
         e.preventDefault();
+
+        signIn('credentials',{ email, password })
+
     };
 
 
@@ -20,6 +27,8 @@ export const LoginForm = () => {
                         id='email'
                         className='border border-slate-300 rounded-lg py-2 px-4 focus:outline-indigo-500'
                         type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div className='mb-3 flex flex-col min-w-md'>
@@ -28,6 +37,8 @@ export const LoginForm = () => {
                         id='password'
                         className='border border-slate-300 rounded-lg py-2 px-4 focus:outline-indigo-500'
                         type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <button className='btn-primary w-full' type='submit'>Iniciar Session</button>
