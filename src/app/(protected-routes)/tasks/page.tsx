@@ -1,17 +1,24 @@
 import { PrismaClient } from "@prisma/client";
 
 import { NewTaskForm, TaskCard } from "@/tasks";
+import { getServerSession } from 'next-auth';
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function TasksPage() {
 
     const prisma = new PrismaClient();
     
+    const session = await getServerSession(authOptions);
+
+
     const pendingTasks = await prisma.task.findMany({ where: {
-        complete: false
+        complete: false,
+        userId: session?.user?.id
     }})
 
     const completeTasks = await prisma.task.findMany({ where: {
-        complete: true
+        complete: true,
+        userId: session?.user?.id
     }})
 
     return (
